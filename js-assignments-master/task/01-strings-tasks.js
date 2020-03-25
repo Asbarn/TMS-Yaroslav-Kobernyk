@@ -38,7 +38,10 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
+ js-assignments
 return value.length
+
+   
 }
 
 /**
@@ -55,7 +58,11 @@ return value.length
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
+
     return "Hello, "+firstName+" "+lastName+"!";
+
+   
+
 }
 
 /**
@@ -69,12 +76,16 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
+
     let result="";
   for(let i=7; value[i]!="!" ;i++)
   {
 result+=value[i];
   }
   return result;
+
+   
+ 
 }
 
 
@@ -89,7 +100,9 @@ result+=value[i];
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
+
     return value[0]
+
 }
 
 /**

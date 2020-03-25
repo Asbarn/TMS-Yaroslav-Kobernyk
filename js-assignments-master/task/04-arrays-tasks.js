@@ -23,7 +23,9 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
+
    return arr.indexOf(value);
+
 }
 
 /**
@@ -38,11 +40,13 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
+
    let result=new Array(len);
    let i=0;
    do{result[i]=i*2+1;i++}
    while(i<len)
    return result;
+
 }
 
 
@@ -58,6 +62,7 @@ function generateOdds(len) {
  *    [] => [] 
  */
 function doubleArray(arr) {
+
    let result=[];
    let i=0;
    if(arr.length!=0){
@@ -67,6 +72,7 @@ function doubleArray(arr) {
 
   return result;}
   else return arr;
+
 }
 
 
@@ -82,7 +88,9 @@ function doubleArray(arr) {
  *    [] => [] 
  */
 function getArrayOfPositives(arr) {
+
    return arr.filter(elem => elem > 0); 
+
 
 }
 
@@ -98,7 +106,9 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
  */
 function getArrayOfStrings(arr) {
+
    return arr.filter(elem => typeof elem=="string");
+
 
 }
 
