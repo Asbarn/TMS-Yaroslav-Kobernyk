@@ -21,7 +21,7 @@ describe('A template string, is wrapped in ` (backticks) instead of \' or "', fu
       assert.equal(evaluated, 'x=' + x);
     });
     it('multiple variables get evaluated too', function() {
-      var evaluated = `${x}`+`+`+`${y}`;
+      var evaluated = '${x} + ${y}';
       assert.equal(evaluated, x + '+' + y);
     });
   });
@@ -48,12 +48,17 @@ describe('A template string, is wrapped in ` (backticks) instead of \' or "', fu
 
 describe('Template string, can contain multiline content', function() {
   it('wrap it in backticks (`) and add a newline, to span across two lines', function() {
-    var normalString = `line1`+`\n`+`\n`+`line3`;
+    var normalString = `line1
+    
+    line3`;
 
     assert.equal(normalString, 'line1\n\nline3');
   });
   it('even over more than two lines', function() {
-    var multiline = ` \n \n \n`;
+    var multiline = `
+    
+    
+    `;
 	    
 	  
     assert.equal(multiline.split('\n').length, 4);
@@ -149,7 +154,7 @@ describe('Use the `raw` property of tagged template strings like so `s.raw`', fu
   });
   describe('`String.raw` as a static function', function(){
     it('concats the raw strings', function() {
-      var expected = ``.concat(String.raw`\n`);
+      var expected = '\\n';
       assert.equal(String.raw`\n`, expected);
     });
     it('two raw-templates-string-backslashes equal two escaped backslashes', function() {
