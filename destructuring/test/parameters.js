@@ -7,7 +7,7 @@ var assert = require('assert');
 describe('Destructuring function parameters', () => {
     describe('destruct parameters', () => {
       it('multiple params from object', () => {
-        const fn = ({id}, {name}) => {
+        const fn = ({id, name}) => {
           assert.equal(id, 42);
           assert.equal(name, 'Wolfram');
         };
@@ -15,7 +15,7 @@ describe('Destructuring function parameters', () => {
         fn(user);
       });
       it('multiple params from array/object', () => {
-        const fn = ([{name}]) => {
+        const fn = ([,{name}]) => {
           assert.equal(name, 'Alice');
         };
         const users = [{name: 'nobody'}, {name: 'Alice', id: 42}];
@@ -28,12 +28,12 @@ describe('Destructuring function parameters', () => {
           assert.strictEqual(id, 23);
           assert.strictEqual(name, 'Bob');
         };
-        fn(23);
+        fn(23,'Bob');
       });
       it('for a missing array value', () => {
         const defaultUser = {id: 23, name: 'Joe'};
-        const fn = ([user]) => {
-          assert.deepEqual(user, defaultUser);
+        const fn = ([user=defaultUser]) => {
+          assert.deepEqual(user, defaultUser); 
         };
         fn([]);
       });
@@ -43,7 +43,7 @@ describe('Destructuring function parameters', () => {
           assert.equal(arr, 2);
           assert.equal(obj, 3);
         };
-        fn(void 0, [], {});
+        fn(1, [2], {obj:3});
       });
     });
   });
