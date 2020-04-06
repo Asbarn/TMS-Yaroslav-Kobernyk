@@ -26,11 +26,11 @@ describe('Destructure objects', () => {
   });
   describe('interesting', () => {
     it('missing refs become undefined', () => {
-      const {z} = {x: 1, z:undefined};
+      const {z} = {x: 1,};
       assert.equal(z, void 0);
     });
     it('destructure from builtins (string)', () => {
-      const {substr} = String();
+      const {substr} = String(1);
       assert.equal(substr, String.prototype.substr); /// undefined == f ????
     });
   });
