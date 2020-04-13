@@ -1,12 +1,12 @@
-function Car(name, model, year, color, maxSpeed, fuelCapacity = 60, fuelConsumption = 10) {
+function Car(name, model, year, color, maxSpeed, fuelCapacity , fuelConsumption ) {
 
     this.name = name;
     this.model = model;
     this.year = year;
     this.color = color;
     this.maxSpeed = maxSpeed;
-    this.fuelCapacity = fuelCapacity;
-    this.fuelConsumption = fuelConsumption;
+    this.fuelCapacity = fuelCapacity||60;
+    this.fuelConsumption = fuelConsumption||10;
 }
 
 Car.prototype.getFullName = function () {
@@ -19,11 +19,11 @@ Car.prototype.getAge = function () {
 
 Car.prototype.changeColor = function (newColor) {
     if (newColor.toLowerCase() == this.color) {
-        console.log("car is already " + this.color);
+        console.log(`car is already ${this.color}` );
     }
     else {
         this.color = newColor;
-        console.log("Now this car is " + this.color);
+        console.log(`Now this car is ${this.color}` );
 
     }
 }
@@ -50,9 +50,11 @@ function extend(Child, Parent) {
     Child.superclass = Parent.prototype;
 }
 
-function BMW(name, model, year, color, maxSpeed, fuelCapacity = 60, fuelConsumption = 10, sunroof) {
-    BMW.superclass.constructor.call(this, name, model, year, color, maxSpeed, fuelCapacity , fuelConsumption );
-    this.sunroof = sunroof;
+function BMW() {
+    const args = [].slice.call(arguments)
+const sunroof = args.pop()
+BMW.superclass.constructor.apply(this, args)
+this.sunroof = sunroof;
 }
 
 extend(BMW, Car);
@@ -68,9 +70,11 @@ const test2 = new BMW('Gaz', '123', '2000', 'red', '100', 70, 5, true);
 
 
 
-function Lexus(name, model, year, color, maxSpeed, fuelCapacity = 60, fuelConsumption = 10, climateControl) {
-    Lexus.superclass.constructor.call(this, name, model, year, color, maxSpeed, fuelCapacity , fuelConsumption );
-    this.climateControl = climateControl;
+function Lexus() {
+    const args = [].slice.call(arguments)
+const climateControl = args.pop()
+Lexus.superclass.constructor.apply(this, args)
+this.climateControl = climateControl;
 }
 
 extend(Lexus, Car);
@@ -85,13 +89,15 @@ Lexus.prototype.getClimateControl = function () {
 const test3 = new Lexus('Lex', '321', '1000', 'white', '100', 50, 5, false);
 
 
-function Vaz(name, model, year, color, maxSpeed, fuelCapacity = 60, fuelConsumption = 10, radio) {
-    Vaz.superclass.constructor.call(this, name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption );
+function Vaz() {
+    const args = [].slice.call(arguments)
+    const radio = args.pop()
+    Vaz.superclass.constructor.apply(this, args)
     this.radio = radio;
 }
 
 extend(Vaz, Car);
-Vaz.prototype.getRadio = function () {
+Vaz.prototype.checkIfRadioExists = function () {
     if (this.radio) {
         console.log("Vaz has radio");
     }

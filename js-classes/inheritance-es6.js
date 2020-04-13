@@ -1,12 +1,12 @@
-class es6Car {
-    constructor(name, model, year, color, maxSpeed, fuelCapacity = 60, fuelConsumption = 10) {
+class Es6Car {
+    constructor(name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption) {
         this.name = name;
         this.model = model;
         this.year = year;
         this.color = color;
         this.maxSpeed = maxSpeed;
-        this.fuelCapacity = fuelCapacity;
-        this.fuelConsumption = fuelConsumption;
+        this.fuelCapacity = fuelCapacity || 60;
+        this.fuelConsumption = fuelConsumption || 10;
     }
 
     getFullName() {
@@ -19,11 +19,11 @@ class es6Car {
 
     changeColor(newColor) {
         if (newColor.toLowerCase() == this.color) {
-            console.log("car is already " + this.color);
+            console.log(`Car is already ${this.color}`);
         }
         else {
             this.color = newColor;
-            console.log("Now this car is " + this.color);
+            console.log(`Now this car is ${this.color}`);
 
         }
     }
@@ -45,9 +45,11 @@ class es6Car {
 
 
 
-class es6BMW extends es6Car {
-    constructor(name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption, sunroof) {
-        super(name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption);
+class Es6BMW extends Es6Car {
+    constructor() {
+        const args = [].slice.call(arguments)
+        const sunroof = args.pop()    
+        super(args);
         this.sunroof = sunroof;
     }
 
@@ -63,9 +65,11 @@ class es6BMW extends es6Car {
 }
 
 
-class es6Lexus extends es6Car {
-    constructor(name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption, climateControl) {
-        super(name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption);
+class Es6Lexus extends Es6Car {
+    constructor() {
+        const args = [].slice.call(arguments)
+        const climateControl = args.pop()    
+        super(args);
         this.climateControl = climateControl;
     }
 
@@ -82,13 +86,15 @@ class es6Lexus extends es6Car {
 
 
 
-class es6Gaz extends es6Car {
-    constructor(name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption, radio) {
-        super(name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption);
+class Es6Gaz extends Es6Car {
+    constructor() {
+        const args = [].slice.call(arguments)
+        const radio = args.pop()    
+        super(args);
         this.radio = radio;
     }
 
-    getRadio() {
+    checkIfRadioExists() {
         if (this.radio) {
             console.log("Vaz has radio");
         }
@@ -99,10 +105,10 @@ class es6Gaz extends es6Car {
 
 }
 
-const es6test1 = new es6Car('Mashina', '1', '1999', 'black', '100');
-const es6test2 = new es6BMW('BMW', '123', '2000', 'red', '100', 70, 5, true);
-const es6test3 = new es6Lexus('Lex', '321', '1000', 'white', '100', 50, 5, false);
-const es6test4 = new es6Gaz('Uaz', '228', '500', 'Grey', '100', 1, 1, true);
+const es6test1 = new Es6Car('Mashina', '1', '1999', 'black', '100');
+const es6test2 = new Es6BMW('BMW', '123', '2000', 'red', '100', 70, 5, true);
+const es6test3 = new Es6Lexus('Lex', '321', '1000', 'white', '100', 50, 5, false);
+const es6test4 = new Es6Gaz('Uaz', '228', '500', 'Grey', '100', 1, 1, true);
 
 
 
