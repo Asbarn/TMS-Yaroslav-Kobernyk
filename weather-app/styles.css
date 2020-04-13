@@ -60,3 +60,5 @@ input.input {
 input:focus {
     outline: none;
 }
+
+#map { height: 500px; }
