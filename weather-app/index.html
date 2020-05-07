@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+
+</head>
+<body>
+    <form id="form" class="searchBar">
+        <input id="input" class="input" type="search" placeholder="Type a city..." />
+        <input id ="button" class='button' type="submit" value="Find" />    
+    </form>
+    <div class="controlPanel">
+        <button id="clear" class='button'>Clear</button>        
+    </div>
+    <table class="tableData" id="tableData">
+        <thead>
+            <td>City</td>
+            <td>Country</td>
+            <td>t, &#8451</td>
+            <td>t, &#8457</td>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+    <div id="map"></div>
+    <script type="text/javascript" src="https://leafletjs-cdn.s3.amazonaws.com/content/leaflet/master/leaflet.js"></script>
+<script type="text/javascript" src="https://tiles.unwiredmaps.com/js/leaflet-unwired.js"></script>
+    <script src="index.js"></script>  
+
+  
+</body>
+</html>
